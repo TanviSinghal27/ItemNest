@@ -1,0 +1,14 @@
+<header class="navbar">
+  <div class="navbar-container">
+    <div class="brand-title">ItemNest</div>
+    <div class="action-panel">
+
+      @if (router.url.includes('/add') || router.url.includes('/edit')) {
+      <button class="btn-add-item" routerLink="/dashboard">Home</button>
+      } @else {
+      <button class="btn-add-item" routerLink="/add">+ Add Item</button>
+      }
+
+    </div>
+  </div>
+</header>

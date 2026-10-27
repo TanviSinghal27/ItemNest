@@ -1,0 +1,263 @@
+:host {
+  display: block;
+  background-color: #f1f3f6;
+  font-family: Roboto, Arial, sans-serif;
+  min-height: 100vh;
+}
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 40px 16px;
+}
+.form-container {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 850px;
+  padding: 32px;
+  box-sizing: border-box;
+}
+.form-header {
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.form-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #212121;
+  margin: 0 0 6px 0;
+}
+
+.form-header p {
+  font-size: 14px;
+  color: #878787;
+  margin: 0;
+}
+
+.form-row {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.form-row.split {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-row.triple {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.form-row.split .form-group,
+.form-row.triple .form-group {
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+form > .form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #212121;
+  margin-bottom: 6px;
+}
+
+input[type='text'],
+input[type='number'],
+input[type='url'],
+select,
+textarea {
+  background-color: #ffffff;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #212121;
+  outline: none;
+  box-sizing: border-box;
+  width: 100%;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #2874f0;
+  box-shadow: 0 0 0 2px rgba(40, 116, 240, 0.1);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #c2c2c2;
+}
+
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+select {
+  appearance: auto;
+  -webkit-appearance: auto;
+  cursor: pointer;
+  padding-right: 14px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 24px;
+  margin-top: 28px;
+}
+
+.form-actions button {
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 2px;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s;
+}
+
+.btn-cancel {
+  background-color: #ffffff;
+  border: 1px solid #d4d4d4;
+  color: #555555;
+}
+
+.btn-cancel:hover {
+  background-color: #f9f9f9;
+  border-color: #c2c2c2;
+}
+
+.btn-submit {
+  background-color: #fb641b;
+  border: 1px solid #fb641b;
+  color: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-submit:hover {
+  background-color: #f35607;
+  border-color: #f35607;
+}
+
+@media (max-width: 600px) {
+  .form-wrapper {
+    padding: 24px 12px;
+  }
+
+  .form-container {
+    padding: 20px 16px;
+  }
+
+  .form-row.split,
+  .form-row.triple {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+
+  .navbar-container {
+    padding: 0 16px;
+  }
+}
+
+.success-message {
+  color: #2e7d32;
+  background: #e6ffe6;
+  border: 1px solid #b7e4b7;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: #c62828;
+  background: #ffebee;
+  border: 1px solid #ffcdd2;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+}
+.navbar {
+  background-color: #2874f0;
+  color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 64px;
+}
+
+.brand-title {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  font-style: italic;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+}
+.btn-add-item {
+  background-color: #ffffff;
+  color: #2874f0;
+  border: 1px solid #ffffff;
+  padding: 8px 16px;
+  border-radius: 2px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-add-item:hover {
+  background-color: #f0f0f0;
+}

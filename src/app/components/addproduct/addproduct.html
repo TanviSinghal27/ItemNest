@@ -1,0 +1,92 @@
+<app-header></app-header>
+<div class="form-wrapper">
+  <div class="form-container">
+    <div class="form-header">
+      <h2>Add New Product</h2>
+      <p>Fill out the details below to list a new item on the marketplace.</p>
+    </div>
+
+    @if(successMessage()){
+    <div class="success-message">
+      {{successMessage()}}
+    </div>
+    }
+    @if(errorMessage()){
+    <div class="error-message">{{errorMessage()}}</div>
+    }
+    <!-- Main Angular Reactive/Template Form Container -->
+    <form class="product-form" #productForm="ngForm" (ngSubmit)="addProducts(productForm)">
+
+      <!-- Row 1: Brand & Title -->
+      <div class="form-row split">
+        <div class="form-group">
+          <label for="brand">Brand Name</label>
+          <input type="text" name="brand" ngModel id="brand" placeholder="e.g., Samsung, Nike" required />
+        </div>
+        <div class="form-group">
+          <label for="title">Product Title</label>
+          <input type="text" id="title" name="title" ngModel placeholder="e.g., Galaxy S25 Ultra 5G" required />
+        </div>
+      </div>
+
+      <!-- Row 2: Category Dropdown & Stock -->
+      <div class="form-row split">
+        <div class="form-group">
+          <label for="category">Category</label>
+          <div class="select-wrapper">
+            <select id="category" name="category" ngModel required>
+              <option value="" disabled selected>Select a category</option>
+              @for(cat of category();track cat){
+              <option [value]="cat">{{ cat }}</option>
+              }
+            </select>
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+          <label for="stock">Available Stock</label>
+          <input type="number" id="stock" name="stock" ngModel min="0" placeholder="e.g., 50" required />
+        </div>
+      </div>
+
+      <!-- Row 3: Pricing Matrix Structure -->
+      <div class="form-row triple">
+        <div class="form-group">
+          <label for="price">Original Price ($)</label>
+          <input type="number" id="price" min="0" step="0.01" name="price" ngModel placeholder="0.00" required />
+        </div>
+        <div class="form-group">
+          <label for="discount">Discount (%)</label>
+          <input type="number" id="discount" min="0" max="100" placeholder="0" name="discountPercentage" ngModel
+            required />
+        </div>
+        <div class="form-group">
+          <label for="shipping">Shipping Timeline</label>
+          <input type="text" id="shipping" name="shipping" ngModel placeholder="e.g., Ships overnight" />
+        </div>
+      </div>
+
+      <!-- Row 4: Image Reference URL Links -->
+      <div class="form-group">
+        <label for="thumbnail">Product Image URL</label>
+        <input type="url" id="thumbnail" name="thumbnail" ngModel placeholder="https://example.com" required />
+      </div>
+
+      <!-- Row 5: Detailed Description Area -->
+      <div class="form-group">
+        <label for="description">Product Description</label>
+        <textarea id="description" rows="4" name="description" ngModel
+          placeholder="Provide a detailed overview of the product specifications, features, and condition..."></textarea>
+      </div>
+
+      <!-- Interaction Form Controls Footer -->
+      <div class="form-actions">
+        <button type="button" class="btn-cancel">Cancel</button>
+        <button type="submit" class="btn-submit">Publish Product</button>
+      </div>
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<app-header></app-header>
+@if(errorMessage()){
+<div class="error-message">{{errorMessage()}}</div>
+}
+<div class="edit-container">
+  <h2>Update Product</h2>
+
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Product Title</label>
+      <input id="title" type="text" formControlName="title" />
+    </div>
+
+
+    <div class="form-group">
+      <label for="discountPercentage">Discount Percentage (%)</label>
+      <input id="discountPercentage" type="number" formControlName="discountPercentage" />
+    </div>
+
+
+    <div class="form-group">
+      <label for="shippingInformation">Shipping Information</label>
+      <input id="shippingInformation" type="text" formControlName="shippingInformation" />
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price ($)</label>
+      <input id="price" type="number" formControlName="price" />
+    </div>
+
+    <div class="form-group">
+      <label for="stock">Stock</label>
+      <input id="stock" type="number" formControlName="stock" />
+    </div>
+
+
+    <div class="action-buttons">
+      <button type="submit" [disabled]="editForm.invalid" class="btn-submit">Save Changes</button>
+      <button type="button" (click)="onCancel()" class="btn-cancel">Cancel</button>
+    </div>
+  </form>
+</div>

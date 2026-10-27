@@ -1,0 +1,57 @@
+<app-header></app-header>
+@if (errorMessage()) {
+<div>{{errorMessage()}}</div>
+}
+
+<!-- Main Feed Layout Area -->
+<div class="main-content">
+  <div class="product-grid">
+    @for(product of product(); track product.id){
+    <div class="product-card">
+
+      @if(product.discountPercentage > 10){
+      <div class="badge-container">
+        <span class="value-badge">Value 365</span>
+      </div>
+      }
+
+
+      <div class="image-wrapper">
+        <img [src]="product.thumbnail" [alt]="product.title" loading="lazy" />
+      </div>
+
+      <div class="info-container">
+        <div class="rating-row">
+          <span class="rating-badge">
+            {{ (product.rating || 0) | number:'1.1-1' }} ★
+          </span>
+          <span class="review-count">({{ product.stock }})</span>
+        </div>
+
+        <h3 class="product-brand">{{ product.brand || 'Generic' }}</h3>
+        <p class="product-title">{{ product.title }}</p>
+
+        <div class="price-block">
+          <span class="current-price">
+            ${{ (product.price * (1 - product.discountPercentage / 100)) | number:'1.2-2' }}
+          </span>
+          <span class="original-price">${{ product.price | number:'1.2-2' }}</span>
+          <span class="discount-percent">{{ product.discountPercentage | number:'1.0-0' }}% off</span>
+        </div>
+
+        <div class="footer-info">
+          <span class="shipping-status">{{ product.shippingInformation || '3-5 bussiness days'}}</span>
+        </div>
+      </div>
+
+      <!-- Action Panel for Card Modification -->
+      <div class="card-actions-wrapper">
+        <button class="btn-action btn-edit" (click)="onEdit(product.id)">Edit</button>
+        <button class="btn-action btn-delete" (click)="onDelete(product.id,product.title)">Delete</button>
+      </div>
+
+    </div>
+
+    }
+  </div>
+</div>
